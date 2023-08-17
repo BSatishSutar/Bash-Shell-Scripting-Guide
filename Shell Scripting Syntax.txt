@@ -1,0 +1,214 @@
+1. Shebang and Basic Script Structure:
+
+#!/bin/bash
+# This is a comment
+
+# Print "Hello, World!"
+echo "Hello, World!"
+
+2. Variables and Data Types:
+
+# Declaring variables
+name="John"
+age=25
+salary=50000.50
+
+# Using variables
+echo "Name: $name"
+echo "Age: $age"
+echo "Salary: $salary"
+
+3. Command-Line Arguments:
+
+#!/bin/bash
+# Usage: ./script.sh arg1 arg2
+
+arg1="$1"
+arg2="$2"
+
+echo "Argument 1: $arg1"
+echo "Argument 2: $arg2"
+
+
+4. Conditional Statements:
+
+#!/bin/bash
+
+num=10
+
+if [ $num -eq 10 ]; then
+    echo "Number is 10"
+elif [ $num -gt 10 ]; then
+    echo "Number is greater than 10"
+else
+    echo "Number is less than 10"
+fi
+
+
+5. Loops:
+a. For Loop:
+
+#!/bin/bash
+
+for i in {1..5}; do
+    echo "Iteration: $i"
+done
+
+
+b. While Loop:
+
+
+#!/bin/bash
+
+count=1
+
+while [ $count -le 5 ]; do
+    echo "Count: $count"
+    ((count++))
+done
+
+
+6. Functions:
+
+#!/bin/bash
+
+# Define a function
+say_hello() {
+    echo "Hello, from function!"
+}
+
+# Call the function
+say_hello
+
+
+7. Input and Output:
+
+#!/bin/bash
+
+# Reading input
+echo "Enter your name: "
+read name
+echo "Hello, $name!"
+
+# Redirecting output to a file
+echo "This is a line of text." > output.txt
+
+# Appending output to a file
+echo "Appending more text." >> output.txt
+
+# Reading from a file
+while IFS= read -r line; do
+    echo "Line: $line"
+done < input.txt
+
+
+8. String Manipulation:
+
+#!/bin/bash
+
+string="Hello, World!"
+
+# String length
+length=${#string}
+echo "Length: $length"
+
+# Substring
+substring=${string:0:5}
+echo "Substring: $substring"
+
+# Concatenation
+concatenated="$string Welcome!"
+echo "Concatenated: $concatenated"
+
+# String replacement
+new_string=${string/World/Universe}
+echo "New String: $new_string"
+
+
+9. Arrays:
+
+#!/bin/bash
+
+# Declare an array
+fruits=("Apple" "Banana" "Orange")
+
+# Accessing array elements
+echo "First fruit: ${fruits[0]}"
+echo "All fruits: ${fruits[@]}"
+
+# Adding and removing elements
+fruits+=("Grapes")
+unset fruits[1]  # Remove the second element
+
+# Looping through an array
+for fruit in "${fruits[@]}"; do
+    echo "Fruit: $fruit"
+done
+
+
+10. File Operations:
+
+#!/bin/bash
+
+# Check if a file exists
+if [ -e "file.txt" ]; then
+    echo "File exists"
+fi
+
+# Reading lines from a file
+while IFS= read -r line; do
+    echo "Line: $line"
+done < file.txt
+
+# Writing to a file
+echo "New line" >> file.txt
+
+# Creating and deleting directories
+mkdir mydir
+rmdir mydir
+
+
+11. Regular Expressions:
+
+#!/bin/bash
+
+string="Hello, 123 World!"
+
+# Pattern matching
+if [[ $string =~ [0-9]+ ]]; then
+    echo "Number found"
+fi
+
+# Extracting matched portion
+if [[ $string =~ ([0-9]+) ]]; then
+    echo "Number: ${BASH_REMATCH[1]}"
+fi
+
+
+12. Exit Status and Error Handling:
+
+#!/bin/bash
+
+# Running a command and capturing its exit status
+ls /nonexistent-directory
+if [ $? -ne 0 ]; then
+    echo "Command failed"
+fi
+
+# Exit the script with a specific status
+exit 1
+
+
+13. User Input Validation:
+
+#!/bin/bash
+
+read -p "Enter a number: " num
+
+# Validate input as a number
+if ! [[ $num =~ ^[0-9]+$ ]]; then
+    echo "Invalid input: Not a number"
+    exit 1
+fi
+
+
